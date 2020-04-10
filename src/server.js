@@ -5,7 +5,7 @@ const app = express();
 
 // Routes 
 import IndexRoutes from './routes/index.routes'
-import TaskRoutes from './routes/task.routes'
+import PublicationRoutes from './routes/publications.routes'
 
 
 // Settings
@@ -17,7 +17,7 @@ app.use(json());
 
 // Routes
 app.use( IndexRoutes );
-app.use('/tasks' , TaskRoutes );
+app.use('/publications' , PublicationRoutes );
 
 
 

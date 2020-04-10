@@ -11,7 +11,7 @@ var _express = _interopRequireWildcard(require("express"));
 
 var _index = _interopRequireDefault(require("./routes/index.routes"));
 
-var _task = _interopRequireDefault(require("./routes/task.routes"));
+var _publication = _interopRequireDefault(require("./routes/publication.routes"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -27,6 +27,6 @@ app.set('port', process.env.PORT || 3000); // Middlewares
 app.use((0, _express.json)()); // Routes
 
 app.use(_index["default"]);
-app.use('/tasks', _task["default"]);
+app.use('/publication', _publication["default"]);
 var _default = app;
 exports["default"] = _default;
