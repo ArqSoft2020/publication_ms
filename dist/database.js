@@ -19,34 +19,36 @@ function connect() {
 
 function _connect() {
   _connect = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-    var client, db;
+    var MONGO_URL, client, db;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.prev = 0;
-            _context.next = 3;
-            return _mongodb["default"].connect('mongodb://localhost:27017', {
+            MONGO_URL = process.env.MONGO_URL || 'mongodb://mongo:27017';
+            _context.prev = 1;
+            _context.next = 4;
+            return _mongodb["default"].connect(MONGO_URL, {
               useUnifiedTopology: true
             });
 
-          case 3:
+          case 4:
             client = _context.sent;
             db = client.db('node-restapi');
             console.log('DB is connected');
             return _context.abrupt("return", db);
 
-          case 9:
-            _context.prev = 9;
-            _context.t0 = _context["catch"](0);
+          case 10:
+            _context.prev = 10;
+            _context.t0 = _context["catch"](1);
+            console.log("error conect");
             console.log(_context.t0);
 
-          case 12:
+          case 14:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 9]]);
+    }, _callee, null, [[1, 10]]);
   }));
   return _connect.apply(this, arguments);
 }
