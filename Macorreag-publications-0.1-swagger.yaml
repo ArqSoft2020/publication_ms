@@ -1,0 +1,353 @@
+swagger: '2.0'
+info:
+  description: Este es el microservicio de publicaciones
+  version: '0.1'
+  title: Publications_ms
+paths:
+  /publications/:
+    get:
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: Definition generated from Swagger Inspector
+          schema:
+            $ref: '#/definitions/Model5'
+      description: dasdasd
+    post:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: false
+          schema:
+            $ref: '#/definitions/Model2'
+          x-examples:
+            application/json: "{\n    \"title\":\"Pan\",\n\t\"description\":\"pan de tipo integral \",\n\t\"state_publication\": true,\n\t\"contact_information\": 3142563897,\n\t\"id_image\": \"OBJECTID\",\n\t\"stock\": 0,\n\t\"expiration_date\": \"2016-05-18T16:00:00Z\" ,\n\t\"price\": 40.000,\n\t\"categories\":[\"pan\",\"integral\",\"viscochos\"]\n\n}"
+      responses:
+        '200':
+          description: Definition generated from Swagger Inspector
+          schema:
+            $ref: '#/definitions/Model9'
+  /publications/id:
+    get:
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: Definition generated from Swagger Inspector
+          schema:
+            $ref: '#/definitions/Model6'
+    put:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: false
+          schema:
+            $ref: '#/definitions/Model0'
+          x-examples:
+            application/json: "{\n    \"title\":\"Pan balnco\",\n\t\"description\":\"pan de tipo integral fresco \",\n\t\"state_publication\": true,\n\t\"contact_information\": 1234235,\n\t\"id_image\": \"OBJECTID\",\n\t\"stock\": 0,\n\t\"expiration_date\": \"2016-05-18T16:00:00Z\" ,\n\t\"price\": 10.000,\n\t\"categories\":[\"pan\",\"integral\",\"viscochos\",\"fresco\"]\n\n}"
+      responses:
+        '200':
+          description: Definition generated from Swagger Inspector
+          schema:
+            $ref: '#/definitions/Model7'
+    delete:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: false
+          schema:
+            $ref: '#/definitions/Model1'
+          x-examples:
+            application/json: "{\n    \"title\":\"Pan balnco\",\n\t\"description\":\"pan de tipo integral fresco \",\n\t\"state_publication\": true,\n\t\"contact_information\": 1234235,\n\t\"id_image\": \"OBJECTID\",\n\t\"stock\": 0,\n\t\"expiration_date\": \"2016-05-18T16:00:00Z\" ,\n\t\"price\": 10.000,\n\t\"categories\":[\"pan\",\"integral\",\"viscochos\",\"fresco\"]\n\n}"
+      responses:
+        '200':
+          description: Definition generated from Swagger Inspector
+          schema:
+            $ref: '#/definitions/Model4'
+definitions:
+  Model0:
+    properties:
+      title:
+        type: string
+      description:
+        type: string
+      state_publication:
+        type: boolean
+      contact_information:
+        type: integer
+        format: int32
+      id_image:
+        type: string
+      stock:
+        type: integer
+        format: int32
+      expiration_date:
+        type: string
+      price:
+        type: number
+        format: double
+      categories:
+        type: array
+        items:
+          type: string
+  Model1:
+    properties:
+      title:
+        type: string
+      description:
+        type: string
+      state_publication:
+        type: boolean
+      contact_information:
+        type: integer
+        format: int32
+      id_image:
+        type: string
+      stock:
+        type: integer
+        format: int32
+      expiration_date:
+        type: string
+      price:
+        type: number
+        format: double
+      categories:
+        type: array
+        items:
+          type: string
+  Model2:
+    properties:
+      title:
+        type: string
+      description:
+        type: string
+      state_publication:
+        type: boolean
+      contact_information:
+        type: integer
+        format: int64
+      id_image:
+        type: string
+      stock:
+        type: integer
+        format: int32
+      expiration_date:
+        type: string
+      price:
+        type: number
+        format: double
+      categories:
+        type: array
+        items:
+          type: string
+  Array:
+    properties:
+      _id:
+        type: string
+      title:
+        type: string
+      description:
+        type: string
+      state_publication:
+        type: boolean
+      contact_information:
+        type: integer
+        format: int64
+      id_image:
+        type: string
+      stock:
+        type: integer
+        format: int32
+      expiration_date:
+        type: string
+      price:
+        type: integer
+        format: int32
+      categories:
+        type: array
+        items:
+          type: string
+  Model3:
+    type: array
+    items:
+      $ref: '#/definitions/Array'
+  Result:
+    properties:
+      result:
+        $ref: '#/definitions/Result'
+      connection:
+        $ref: '#/definitions/Connection'
+      deletedCount:
+        type: integer
+        format: int32
+      'n':
+        type: integer
+        format: int32
+      ok:
+        type: integer
+        format: int32
+  _events: {}
+  Bson: {}
+  Connection:
+    properties:
+      _events:
+        $ref: '#/definitions/_events'
+      _eventsCount:
+        type: integer
+        format: int32
+      id:
+        type: integer
+        format: int32
+      address:
+        type: string
+      bson:
+        $ref: '#/definitions/Bson'
+      socketTimeout:
+        type: integer
+        format: int32
+      monitorCommands:
+        type: boolean
+      closed:
+        type: boolean
+      destroyed:
+        type: boolean
+      lastIsMasterMS:
+        type: integer
+        format: int32
+  Model4:
+    properties:
+      message:
+        type: string
+      result:
+        $ref: '#/definitions/Result'
+  Model5_Array:
+    properties:
+      _id:
+        type: string
+      title:
+        type: string
+      description:
+        type: string
+      state_publication:
+        type: boolean
+      contact_information:
+        type: integer
+        format: int64
+      id_image:
+        type: string
+      stock:
+        type: integer
+        format: int32
+      expiration_date:
+        type: string
+      price:
+        type: integer
+        format: int32
+      categories:
+        type: array
+        items:
+          type: string
+  Model5:
+    type: array
+    items:
+      $ref: '#/definitions/Model5_Array'
+  Model6:
+    properties:
+      _id:
+        type: string
+      title:
+        type: string
+      description:
+        type: string
+      state_publication:
+        type: boolean
+      contact_information:
+        type: integer
+        format: int32
+      id_image:
+        type: string
+      stock:
+        type: integer
+        format: int32
+      expiration_date:
+        type: string
+      price:
+        type: integer
+        format: int32
+      categories:
+        type: array
+        items:
+          type: string
+  Model7:
+    properties:
+      message:
+        type: string
+  Model8:
+    properties:
+      title:
+        type: string
+      description:
+        type: string
+      state_publication:
+        type: boolean
+      contact_information:
+        type: integer
+        format: int64
+      id_image:
+        type: string
+      stock:
+        type: integer
+        format: int32
+      expiration_date:
+        type: string
+      price:
+        type: integer
+        format: int32
+      categories:
+        type: array
+        items:
+          type: string
+      _id:
+        type: string
+  Model9:
+    properties:
+      title:
+        type: string
+      description:
+        type: string
+      state_publication:
+        type: boolean
+      contact_information:
+        type: integer
+        format: int64
+      id_image:
+        type: string
+      stock:
+        type: integer
+        format: int32
+      expiration_date:
+        type: string
+      price:
+        type: integer
+        format: int32
+      categories:
+        type: array
+        items:
+          type: string
+      _id:
+        type: string
