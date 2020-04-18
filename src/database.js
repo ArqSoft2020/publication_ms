@@ -3,7 +3,7 @@ import MongoClient from 'mongodb';
 export async function connect(){
     
     const MONGO_URL = process.env.MONGO_URL || 'mongodb://mongo:27017'
-
+    console.log('DB is test');
     try {
 
     

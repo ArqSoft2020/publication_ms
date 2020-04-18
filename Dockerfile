@@ -10,10 +10,10 @@ FROM node
 # LABEL version="1.0"
 
 #Crear directorio de Trabajo ROOT
-WORKDIR /usr/dist
+WORKDIR /publications
 
 #Copia los archivos package en el directorio Root
-COPY package*.json ./
+#COPY package*.json ./
 
 # Instala las dependencias de npm 
 RUN npm install
@@ -21,6 +21,9 @@ RUN npm install
 #Copia la App en el directorio Root
 COPY . .
 
+RUN npm install
+
+RUN npm run build
 
 #Corre el comando start descrito en package.json para ejecutar la App
 # EXPOSE 8080
