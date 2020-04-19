@@ -1,6 +1,10 @@
 import '@babel/polyfill';
 
-import app from './server'
+require('./connection');
+
+
+import app from './server';
+
 
 
 async function main(){

@@ -7,6 +7,11 @@ import { connect } from '../database'
 import { ObjectID } from 'mongodb'
 
 
+const Publication = require('../models/Publication');
+
+
+
+
 router.get('/', async (req, res) => {
     const db = await connect();
     const result = await db.collection('publications').find({}).toArray();
@@ -16,9 +21,9 @@ router.get('/', async (req, res) => {
 )
 
 router.post('/', async (req, res) => {
-    const db = await connect();
-    const publication = {
-        
+
+    const publication = new Publication({
+            
         title : req.body.title,
         description : req.body.description,
         state_publication : req.body.state_publication,
@@ -29,15 +34,10 @@ router.post('/', async (req, res) => {
         price : req.body.price,
         categories : req.body.categories
 
+    })
 
-    }
-    // Es lo mismo de arriba
-    // const { title, description } = req.body;
-
-    const result = await db.collection('publications').insertOne(publication);
-
-
-    res.json(result.ops[0]);
+    await publication.save();
+    res.send(publication);
 }
 )
 

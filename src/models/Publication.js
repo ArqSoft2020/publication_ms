@@ -8,7 +8,7 @@ const publicationSchema = new Schema ({
     state_publication : Boolean,
     contact_information : String,
     id_image : {
-        type : ObjectId,
+        type : Number,
         default : 0
     } ,
     stock : {
@@ -25,3 +25,5 @@ const publicationSchema = new Schema ({
     },
     categories : [String]
 })
+
+module.exports = model('Publication', publicationSchema);
