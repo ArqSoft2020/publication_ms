@@ -2,6 +2,10 @@
 const mongoose = require('mongoose');
 
 const MONGO_URL = process.env.MONGO_URL || 'mongodb+srv://macorreag:helloworld@cluster0-aodgz.mongodb.net/test?retryWrites=true&w=majority';
+console.log('DB is remote');
+
+// const MONGO_URL = process.env.MONGO_URL || 'mongodb://mongo:27017';
+// console.log('DB is local');
 
 const db = mongoose.connection;
 

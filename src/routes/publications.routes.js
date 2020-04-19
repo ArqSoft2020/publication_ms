@@ -1,24 +1,16 @@
 import { Router } from 'express'
+
 const router = Router();
-
-// Database connection  
-
-import { connect } from '../database'
-import { ObjectID } from 'mongodb'
-
 
 const Publication = require('../models/Publication');
 
 
-
-
 router.get('/', async (req, res) => {
-    const db = await connect();
-    const result = await db.collection('publications').find({}).toArray();
-    res.json(result);
+    
+    const publications = await Publication.find();
+    res.send(publications);
 
-}
-)
+})
 
 router.post('/', async (req, res) => {
 
@@ -43,50 +35,73 @@ router.post('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
 
-    const { id } = req.params;
-  
-    const db = await connect();
+    const publication = await Publication.findOne({ _id: req.params.id });
+    res.send(publication);
 
-    const result = await db.collection('publications').findOne({_id : ObjectID(id)})
-    res.json(result);
-}
-)
+})
 
 router.delete('/:id', async (req , res) =>{
-    const { id } = req.params;
-    const db = await connect();
 
-    const result  = await db.collection('publications').deleteOne({_id: ObjectID(id)});
-    res.json({
-        message: `Publication ${id} deleted`,
-        result
-    })
+    try {
+        await Publication.deleteOne({ _id: req.params.id })
+        //Status = Okay 
+        res.status(200).send("Publication "+ req.params.id +" was deleted.");
+    } catch {
+        //Status = Not Found
+        res.status(404)
+        res.send({ error: "Publication doesn't exist!" })
+    }
 })
 
 
-router.put('/:id', async ( req, res ) => {
-    const { id } = req.params;
+router.post('/:id', async ( req, res ) => {
+
+    try {
+        const publication = await Publication.findOne({ _id: req.params.id });
     
-    const updatePublication = {
-        
-        title : req.body.title,
-        description : req.body.description,
-        state_publication : req.body.state_publication,
-        contact_information : req.body.contact_information,
-        id_image : req.body.id_image,
-        stock : req.body.stock,
-        expiration_date : req.body.expiration_date,
-        price : req.body.price,
-        categories : req.body.categories
+        if (req.body.title) {
+          publication.title = req.body.title;
+        }
+    
+        if (req.body.description) {
+          publication.description = req.body.description;
+        }
 
+        if (req.body.state_publication) {
+            publication.state_publication = req.body.state_publication;
+        }
 
+        if (req.body.contact_information) {
+            publication.contact_information = req.body.contact_information;
+        }
+
+        if (req.body.id_image) {
+            publication.id_image = req.body.id_image;
+        }
+
+        if (req.body.stock) {
+            publication.stock = req.body.stock;
+        }
+
+        if (req.body.expiration_date) {
+            publication.expiration_date = req.body.expiration_date;
+        }
+
+        if (req.body.price) {
+            publication.price = req.body.price;
+        }
+
+        if (req.body.categories) {
+            publication.categories = req.body.categories;
+        }
+
+    
+        await publication.save()
+        res.send(publication)
+      } catch {
+        res.status(404)
+        res.send({ error: "Publication doesn't exist!" })
     }
-
-    const db = await connect();
-    const result = await db.collection('publications').updateOne({_id: ObjectID(id)}, {$set: updatePublication});
-    res.json({
-        message: `Publication ${id} Updated`
-    })
 
 })
 
