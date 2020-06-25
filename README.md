@@ -25,3 +25,22 @@ sudo docker-compose up
 ## Descripción de elementos de la vista
 
 **Publication**: Es el elemento ( _documento en MongoDB_ ) que almacenara las cualidades de un producto  que el usuario desea vender ó intercambiar mediante nuestra plataforma.
+
+
+## Build Images Only with Dockerfile
+
+Para construir la imagen que controla el microservicio use el siguiente comando:
+
+```
+sudo docker build -t macorreag/perime-ms-publication .
+```
+
+La imagen de este microservicio es expuesta mediante el puerto 3000 por lo tanto este debe estar abierto para poder acceder al microservicio,para correr este microservicio use:
+
+> Tenga en cuenta que la base de datos de MongoDB debe estar corriendo de manera local en el puerto 27017
+
+```
+docker run -p 3000:3000 -d macorreag/perime-ms-publication
+```
+
+
