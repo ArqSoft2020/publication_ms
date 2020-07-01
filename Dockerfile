@@ -9,6 +9,10 @@ FROM node
 LABEL maintainer="macorreag@unal.edu.co"
 LABEL version="1.0"
 
+#Variables de Entorno establecidas
+ENV PORT 3001
+ENV MONGO_URL mongodb+srv://macorreag:helloworld@cluster0-aodgz.mongodb.net/test?retryWrites=true&w=majority
+
 #Crear directorio de Trabajo ROOT
 WORKDIR /publications
 
@@ -21,8 +25,8 @@ RUN npm install
 #Copia la App en el directorio Root
 COPY . .
 
-
-EXPOSE 3000
+#Se expone la App en el puerto establecido anteriormente
+EXPOSE $PORT
 
 RUN npm run build
 

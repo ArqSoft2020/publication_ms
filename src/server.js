@@ -9,7 +9,7 @@ import PublicationRoutes from './routes/publications.routes'
 
 
 // Settings
-app.set('port', process.env.PORT || 3000 )
+app.set('port', process.env.PORT )
 
 
 // Middlewares
