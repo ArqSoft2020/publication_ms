@@ -8,6 +8,10 @@ import IndexRoutes from './routes/index.routes'
 import PublicationRoutes from './routes/publications.routes'
 
 
+// For use a variable Enviroment
+const dotenv = require('dotenv');
+dotenv.config();
+
 // Settings
 app.set('port', process.env.PORT )
 
