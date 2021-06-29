@@ -53,3 +53,7 @@ puede usar la base de datos local con :
 ```
 donde *mongo* es el nombre del microservicio que corre la app en caso de ser local use 'locahost'
 
+## Falta
+
+Se debe añadir a _secrets_ las variables del archivo _.env_ para eliminar la exposición que se tienen en el repo. Temporalmente se cerro el Cluster.
+
